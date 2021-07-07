@@ -1,0 +1,62 @@
+﻿@using EntityLayer.Concrete
+@model List<Writer>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<!DOCTYPE html>
+<html>
+
+<body class="hold-transition sidebar-mini">
+    <section class="content">
+
+        <div style="margin:8px;">
+            <div class="card card-solid">
+                <div class="card-header">
+                   YAZARLAR
+                    <a href="/Writer/AddWritter" class="btn btn-primary float-right">Yazar Ekle</a>
+                </div>
+
+                <div class="card-body pb-0">
+                    <div class="row d-flex align-items-stretch">
+                        @foreach (var item in Model)
+                        {
+                            <div class="col-12  col-md-6 col-lg-4 d-flex align-items-stretch">
+                                <div class="card" style="width: 20rem; text-align:center;">
+
+                                    <img src="@item.WriterImage" class="img-circle img-fluid" alt="..." style="width:10rem; margin:auto; margin-top:1rem;">
+                                    <div class="card-body">
+                                        <h5 class="" style="margin:auto;">@item.WriterName @item.WriterSurname</h5>
+                                        <p style="font-size:0.9rem; padding-top:0.1rem; font-style:italic; opacity:0.8;">@item.WriterTitle</p>
+                                        <p class="card-text">@item.WriterAbout.</p>
+                                        <p class="card-text"><i class="fas fa-mail-bulk pr-2"></i>@item.WriterMail</p>
+
+                                    </div>
+                                    <div class="card-footer" style="text-align:center;">
+                                        <div class="">
+                                            @*<a href="#" class="btn btn-sm bg-teal text-left">
+                                                <i class="fas fa-heading"></i>
+                                                Yazar Başlıkları
+                                            </a>*@
+                                            <a href="/Writer/EditWriter/@item.WriterID" class="btn btn-sm btn-primary text-right">
+                                                <i class="fas fa-user"></i> Profili Düzenle
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        
+    </section>
+</body>
+</html>
+
+

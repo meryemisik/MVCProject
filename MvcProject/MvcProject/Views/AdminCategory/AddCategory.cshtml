@@ -1,0 +1,44 @@
+﻿@model EntityLayer.Concrete.Category
+@{
+    ViewBag.Title = "AddCategory";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div style="margin:8px;">
+
+    <div class="card">
+        <div class="card-header">
+           KATEGORİ EKLE
+        </div>
+        <div class="card-body">
+            @using (Html.BeginForm("AddCategory", "AdminCategory", FormMethod.Post))
+            {
+                <div class="form-group">
+
+                    @Html.Label("Kategori Adı")
+                    @Html.TextBoxFor(x => x.CategoryName, new { @class = "form-control" })
+                    <div style="color :red; font-weight:bold; padding-left:5px;">
+                        @Html.ValidationMessageFor(x => x.CategoryName)
+                    </div>
+                    <br />
+                    @Html.Label("Kategori Açıklaması")
+
+
+                    @Html.TextAreaFor(x => x.CategoryDescription, new { @class = "form-control" })
+
+                    <div style="color :red; font-weight:bold; padding-left:5px;">
+                        @Html.ValidationMessageFor(x => x.CategoryDescription)
+                    </div>
+
+
+                    <br />
+                    <a href="/AdminCategory/Index" class="btn btn-primary float-left">Kategori Listesine Git</a>
+                    <button class="btn btn-primary  float-right">Kategori Ekle</button>
+                </div>
+            }
+        </div>
+    </div>
+  
+
+</div>
+

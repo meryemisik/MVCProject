@@ -1,0 +1,43 @@
+﻿@model EntityLayer.Concrete.Heading
+@{
+    ViewBag.Title = "EditHeading";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div style="margin:8px;">
+
+
+    <div class="card">
+        <div class="card-header">
+           BAŞLIK GÜNCELLE
+        </div>
+        <div class="card-body">
+            @using (Html.BeginForm("EditHeading", "Heading", FormMethod.Post))
+            {
+
+            <div class="form-group">
+
+                @Html.Label("Başlık ID")
+                @Html.TextBoxFor(x => x.HeadingID, new { @class = "form-control" })
+                <br />
+                @Html.Label("Başlık Adı")
+                @Html.TextBoxFor(x => x.HeadingName, new { @class = "form-control" })
+                <br />
+                @Html.Label("Tarih")
+                @Html.TextBoxFor(x => x.HeadingDate, new { @class = "form-control" })
+                <br />
+                @Html.Label("Yazar ID")
+                @Html.TextBoxFor(x => x.WriterID, new { @class = "form-control" })
+                <br />
+                @Html.Label("Kategori Adı")
+                @Html.DropDownListFor(x => x.CategoryID, (List<SelectListItem>)ViewBag.vlc, new { @class = "form-control" })
+                <br />
+
+                <a href="/Heading/Index" class="btn btn-primary float-left">Başlık Listesine Git</a>
+                <button class="btn btn-primary float-right">Güncelle</button>
+            </div>
+
+            }
+        </div>
+    </div>
+</div>
